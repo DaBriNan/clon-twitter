@@ -1,61 +1,61 @@
-
-import {useState,useEffect} from "react"
+import { PostsForm } from "./components/PostsForm"
 
 function App() {
-   const [posts, setPosts]= useState([]);
-   const [post, setPost]= useState("");
 
-   useEffect(() => {
-    console.log("Componente cargado")
-  }, [])
+  return (
+    <div className="h-screen text-2x1  border-x  border-gray-500 w-2/5">
+        <section className="flex w-full text-lg  font-bols mb-4 border-b  border-gray-500">
+        <div className="w-1/2  p-2 flex justify-center hover:bg-neutral-900"> For you</div>
+        <div className=" w-1/2 p-2 flex justify-center hover:bg-neutral-900"> Following</div>
+        </section>
+    
+      <PostsForm />
+    </div>
+  );
+}
 
-   const handleSubmitPost= (event) => {
-    event.preventDefault()
-    if (post){
+/*const PostsForm = () => {
+  const [posts, setPosts] = useState([]);
+  const [post, setPost] = useState("");
+
+  const handleSubmitPost = (e) => {
+    e.preventDefault();
+    if (post) {
       setPosts([...posts, post]);
       setPost("");
-      console.log([...posts, post])
     }
-   };
+  };
 
+  const handleInputChange = (e) => {
+    setPost(e.target.value);
+  };
 
-   const handleImputChange= (event) => {
-    setPost(event.target.value);
-   };
-
-   const handleDeletePost= (index) => {
-    const newPosts = posts.filter((_,i ) => i !== index)
-    setPosts(newPosts)
-
-   };
+  const handleDeletePost = (index) => {
+    const newPosts = posts.filter((_, i) => i !== index);
+    setPosts(newPosts);
+  };
 
   return (
     <>
-      <h1>Clon twitter</h1>
       <form onSubmit={handleSubmitPost}>
-        <input type="text" 
-        placeholder="Escribir algo" 
-        value={post}
-        onChange={handleImputChange}/>
-        <input type="submit" value="postear"/>
+        <input
+          type="text"
+          placeholder="Escribe algo"
+          value={post}
+          onChange={handleInputChange}
+        />
+        <input type="submit" value="Postear" />
       </form>
-      <p> actual post:  {post}</p>
-
-    
-    <section>
-    {posts.map((item, index) => (
-      <div key= "index"> 
-      <p>{item}</p>
-      <button onClick= {() => handleDeletePost (index)}> Borrar</button>
-        </div>
-      ))}
-</section>
-    
-
-      
-
+      <section>
+        {posts.map((item, index) => (
+          <div key={index}>
+            <p>{item}</p>
+            <button onClick={() => handleDeletePost(index)}>Borrar</button>
+          </div>
+        ))}
+      </section>
     </>
-  )
-}
+  );
+};*/
 
-export default App
+export default App;
